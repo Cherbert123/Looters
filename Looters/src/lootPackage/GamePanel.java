@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer framerate;
 	final int MENU_STATE = 0;
@@ -87,6 +88,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		minusStrength.setFocusable(false);
 		plusHealth.setFocusable(false);
 		minusHealth.setFocusable(false);
+		helpButton.setFocusable(false);
 		normal = new Font("Arial", Font.PLAIN, 35);
 		framerate = new Timer(1000 / 60, this);
 		om.addObject(player);
@@ -412,7 +414,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	private void drawEndState(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 800, 800); 
+		g.setFont(normal);
+		g.setColor(Color.WHITE);
+		g.drawString("Game Over", 75, 350);
 		plusStrength.setEnabled(false);
 		plusStrength.setVisible(false);
 		minusStrength.setEnabled(false);
@@ -426,7 +432,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	private void drawGameState(Graphics g) {
-		
+		if(player.isAlive == false){
+			currentState = END_STATE;
+		}
 		helpButton.setVisible(false);
 		helpButton.setEnabled(false);
 		plusStrength.setEnabled(false);
@@ -529,6 +537,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			enemy.p = player;
 			enemy.tactics = "Rage";
 			enemy.type = random.nextInt(3);
+			if(om.getScore() > 4){
+			enemy.type = random.nextInt(4);	
+			}
 			enemyCount = enemyCount + 1;
 			enemys.add(enemy);
 			om.addObject(enemy);

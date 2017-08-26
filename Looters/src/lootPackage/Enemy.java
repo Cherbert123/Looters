@@ -16,6 +16,7 @@ public class Enemy extends GameObject {
 	public static BufferedImage giantRatImg;
 	public static BufferedImage kolblodFighterImg;
 	public static BufferedImage skeletonImg;
+	public static BufferedImage ggImg;
 	int damage;
 	int speed;
 	int follow = 300;
@@ -31,6 +32,7 @@ public class Enemy extends GameObject {
 			giantRatImg = ImageIO.read(this.getClass().getResourceAsStream("GiantRat.png"));
 			kolblodFighterImg = ImageIO.read(this.getClass().getResourceAsStream("koboldFighter.png"));
 			skeletonImg = ImageIO.read(this.getClass().getResourceAsStream("Skeleton.png"));
+			ggImg = ImageIO.read(this.getClass().getResourceAsStream("GoldGoblin.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,6 +87,8 @@ public class Enemy extends GameObject {
 			g.drawImage(giantRatImg, x, y, null);
 		} else if (type == 2) {
 			g.drawImage(skeletonImg, x, y, null);
+		} else if (type == 3) {
+			g.drawImage(ggImg, x, y, null);
 		}
 	}
 }
