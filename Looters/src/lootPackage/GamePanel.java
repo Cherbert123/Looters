@@ -45,6 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public static BufferedImage swordImg;
 	public static BufferedImage holeImg;
 	public static BufferedImage helpImg;
+	public static BufferedImage waterOrbImg;
 	Font normal;
 	int SpellTime;
 	String spell = "";
@@ -145,6 +146,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			attackImg = ImageIO.read(this.getClass().getResourceAsStream("AttackSelection.png"));
 			invImg = ImageIO.read(this.getClass().getResourceAsStream("inventory.png"));
 			swordImg = ImageIO.read(this.getClass().getResourceAsStream("Weapon.png"));
+			waterOrbImg = ImageIO.read(this.getClass().getResourceAsStream("waterOrb.png"));
 			helpImg = ImageIO.read(this.getClass().getResourceAsStream("HelpScreen.png"));
 
 		} catch (IOException e) {
@@ -563,6 +565,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			}
 			if (player.rotation == 3) {
 				Projectile fireball = new Projectile("fireImg", 3, 400, 20, player.x - 50, player.y, 50, 50);
+				om.addObject(fireball);
+			}
+			spell = "";
+		}
+		if (spell.equalsIgnoreCase("LightLight")) {
+			if (player.rotation == 0) {
+				Projectile fireball = new Projectile("waterOrbImg", 0, 400, 20, player.x, player.y + 50, 50, 50);
+				om.addObject(fireball);
+			}
+			if (player.rotation == 1) {
+				Projectile fireball = new Projectile("waterOrbImg", 1, 400, 20, player.x + 50, player.y, 50, 50);
+				om.addObject(fireball);
+			}
+			if (player.rotation == 2) {
+				Projectile fireball = new Projectile("waterOrbImg", 2, 400, 20, player.x, player.y - 50, 50, 50);
+				om.addObject(fireball);
+			}
+			if (player.rotation == 3) {
+				Projectile fireball = new Projectile("waterOrbImg", 3, 400, 20, player.x - 50, player.y, 50, 50);
 				om.addObject(fireball);
 			}
 			spell = "";

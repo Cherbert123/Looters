@@ -22,6 +22,7 @@ public class Projectile extends GameObject {
 	public static BufferedImage fireImg;
 	public static BufferedImage lightningImg;
 	public static BufferedImage iceOrbImg;
+	public static BufferedImage waterOrbImg;
 
 	public Projectile(String img, int rotation, int range, int speed, int x, int y, int width, int height) {
 		super();
@@ -29,6 +30,7 @@ public class Projectile extends GameObject {
 			fireImg = ImageIO.read(this.getClass().getResourceAsStream("FireBlast.png"));
 			lightningImg = ImageIO.read(this.getClass().getResourceAsStream("thunderShock.png"));
 			iceOrbImg = ImageIO.read(this.getClass().getResourceAsStream("OrbOfWinter.png"));
+			waterOrbImg = ImageIO.read(this.getClass().getResourceAsStream("waterOrb.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -72,6 +74,9 @@ public class Projectile extends GameObject {
 		}
 		if (img.equalsIgnoreCase("lightningImg")) {
 			g.drawImage(lightningImg, x, y, null);
+		}
+		if (img.equalsIgnoreCase("waterOrbImg")) {
+			g.drawImage(waterOrbImg, x, y, null);
 		}
 		if (img.equalsIgnoreCase("iceOrbImg")) {
 			Graphics2D g2 = (Graphics2D) g;
